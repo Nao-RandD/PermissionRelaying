@@ -21,33 +21,40 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // 連続する権限をWorkflowとして順番に要求する()
-        // 割り込みの権限要求はキューイングして前の権限要求が完了したら実行する()
+        割り込みの権限要求はキューイングして前の権限要求が完了したら実行する()
         // workflowの割り込み()
     }
 
     // 依存関係のある直列した権限要求
     func 連続する権限をWorkflowとして順番に要求する() {
-        Manager.shared.queuing(workflow: SetupTangerineWorkFlow())
+        Task {
+            await PermissionManager.shared.queuing(task: SetupTangerineWorkflow())
+        }
     }
 
     // 依存関係がない並列する権限要求
     func 割り込みの権限要求はキューイングして前の権限要求が完了したら実行する() {
         // Task を実行しておく
-        Manager.shared.queuing(task: ATTPermissionTask())
+        Task {
+            await PermissionManager.shared.queuing(task: ATTPermissionTask())
+        }
         // 1秒待って割り込みさせる
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            Manager.shared.queuing(task: NotificationPermissionTask())
-        })
+        Task {
+            try await Task.sleep(nanoseconds: 1000000000)
+            await PermissionManager.shared.queuing(task: NotificationPermissionTask())
+        }
     }
 
     // 依存関係がない並列する権限要求 (Task と Workflow)
     func workflowの割り込み() {
         // Workflow を実行しておく
-        Manager.shared.queuing(workflow: SetupTangerineWorkFlow())
-        // 1秒待って Task を割り込みさせる
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            Manager.shared.queuing(task: NotificationPermissionTask())
-        })
+        Task {
+            await PermissionManager.shared.queuing(task: SetupTangerineWorkflow())
+        }
+        // 1秒待って割り込みさせる
+        Task {
+            await PermissionManager.shared.queuing(task: NotificationPermissionTask())
+        }
     }
 }
 

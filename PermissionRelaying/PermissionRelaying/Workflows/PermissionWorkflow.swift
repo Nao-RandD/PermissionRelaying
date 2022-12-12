@@ -8,5 +8,4 @@
 import Foundation
 import Combine
 
-// Marker Protocol
-protocol PermissionWorkFlow: Publisher {}
+protocol PermissionWorkflow: PermissionTask {}

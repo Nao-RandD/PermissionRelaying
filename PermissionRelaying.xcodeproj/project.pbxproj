@@ -10,10 +10,8 @@
 		0DAD1AF3293993C400D98A38 /* NotificationPermissionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD1AF2293993C400D98A38 /* NotificationPermissionTask.swift */; };
 		0DAD1AF52939943200D98A38 /* ATTPermissionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD1AF42939943200D98A38 /* ATTPermissionTask.swift */; };
 		0DAD1AF92939947500D98A38 /* SetupTangerineWorkflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD1AF82939947500D98A38 /* SetupTangerineWorkflow.swift */; };
-		0DAD1AFC293994B800D98A38 /* AppPermissionWorkflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD1AFB293994B800D98A38 /* AppPermissionWorkflow.swift */; };
-		0DAD1AFE293994E200D98A38 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD1AFD293994E200D98A38 /* Manager.swift */; };
+		0DAD1AFE293994E200D98A38 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD1AFD293994E200D98A38 /* PermissionManager.swift */; };
 		0DAD1B002939951200D98A38 /* PermissionWorkflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD1AFF2939951200D98A38 /* PermissionWorkflow.swift */; };
-		0DAD1B022939952E00D98A38 /* PermissionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD1B012939952E00D98A38 /* PermissionError.swift */; };
 		0DE3D3BF293849390010297B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3D3BE293849390010297B /* AppDelegate.swift */; };
 		0DE3D3C1293849390010297B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3D3C0293849390010297B /* SceneDelegate.swift */; };
 		0DE3D3C3293849390010297B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3D3C2293849390010297B /* ViewController.swift */; };
@@ -47,10 +45,8 @@
 		0DAD1AF2293993C400D98A38 /* NotificationPermissionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionTask.swift; sourceTree = "<group>"; };
 		0DAD1AF42939943200D98A38 /* ATTPermissionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTPermissionTask.swift; sourceTree = "<group>"; };
 		0DAD1AF82939947500D98A38 /* SetupTangerineWorkflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTangerineWorkflow.swift; sourceTree = "<group>"; };
-		0DAD1AFB293994B800D98A38 /* AppPermissionWorkflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPermissionWorkflow.swift; sourceTree = "<group>"; };
-		0DAD1AFD293994E200D98A38 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		0DAD1AFD293994E200D98A38 /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionManager.swift; sourceTree = "<group>"; };
 		0DAD1AFF2939951200D98A38 /* PermissionWorkflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionWorkflow.swift; sourceTree = "<group>"; };
-		0DAD1B012939952E00D98A38 /* PermissionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionError.swift; sourceTree = "<group>"; };
 		0DE3D3BB293849390010297B /* PermissionRelaying.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PermissionRelaying.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DE3D3BE293849390010297B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DE3D3C0293849390010297B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,7 +94,6 @@
 				0DE3D3EF293849550010297B /* PermissionTask.swift */,
 				0DAD1AF2293993C400D98A38 /* NotificationPermissionTask.swift */,
 				0DAD1AF42939943200D98A38 /* ATTPermissionTask.swift */,
-				0DAD1B012939952E00D98A38 /* PermissionError.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -107,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				0DAD1AF82939947500D98A38 /* SetupTangerineWorkflow.swift */,
-				0DAD1AFB293994B800D98A38 /* AppPermissionWorkflow.swift */,
 				0DAD1AFF2939951200D98A38 /* PermissionWorkflow.swift */,
 			);
 			path = Workflows;
@@ -170,7 +164,7 @@
 			children = (
 				0DAD1AF72939945F00D98A38 /* Workflows */,
 				0DAD1AF62939945000D98A38 /* Tasks */,
-				0DAD1AFD293994E200D98A38 /* Manager.swift */,
+				0DAD1AFD293994E200D98A38 /* PermissionManager.swift */,
 			);
 			path = PermissionRelaying;
 			sourceTree = "<group>";
@@ -309,14 +303,12 @@
 				0DE3D3C3293849390010297B /* ViewController.swift in Sources */,
 				0DAD1AF52939943200D98A38 /* ATTPermissionTask.swift in Sources */,
 				0DAD1AF3293993C400D98A38 /* NotificationPermissionTask.swift in Sources */,
-				0DAD1AFC293994B800D98A38 /* AppPermissionWorkflow.swift in Sources */,
 				0DE3D3BF293849390010297B /* AppDelegate.swift in Sources */,
 				0DAD1B002939951200D98A38 /* PermissionWorkflow.swift in Sources */,
 				0DE3D3C1293849390010297B /* SceneDelegate.swift in Sources */,
-				0DAD1B022939952E00D98A38 /* PermissionError.swift in Sources */,
 				0DE3D3F0293849550010297B /* PermissionTask.swift in Sources */,
 				0DAD1AF92939947500D98A38 /* SetupTangerineWorkflow.swift in Sources */,
-				0DAD1AFE293994E200D98A38 /* Manager.swift in Sources */,
+				0DAD1AFE293994E200D98A38 /* PermissionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

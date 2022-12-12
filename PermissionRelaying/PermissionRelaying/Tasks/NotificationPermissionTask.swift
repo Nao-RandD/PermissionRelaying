@@ -7,46 +7,27 @@
 
 import Foundation
 import UserNotifications
-import Combine
 
 struct NotificationPermissionTask: PermissionTask {
-
-    typealias Output = UNAuthorizationStatus
-    typealias Failure = Never
-
-    func receive<S>(subscriber: S)
-    where S : Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
-        let subscription = PermissionSubscription(subscriber: subscriber)
-        subscriber.receive(subscription: subscription)
-    }
-
-    struct PermissionSubscription<S: Subscriber>: Subscription
-    where S.Input == NotificationPermissionTask.Output, S.Failure == NotificationPermissionTask.Failure {
-
-        let combineIdentifier = CombineIdentifier()
-        let subscriber: S
-
-        init(subscriber: S) {
-            self.subscriber = subscriber
-            request()
-        }
-
-        func request(_ demand: Subscribers.Demand) {}
-        func cancel() {}
-    }
-}
-
-extension NotificationPermissionTask.PermissionSubscription {
-    func request() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert], completionHandler: { granted, error in
-            if error == nil && granted {
-                UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { settings in
-                    _ = subscriber.receive(settings.authorizationStatus)
-                    subscriber.receive(completion: .finished)
-                })
+    func request() async -> PermissionAuthorizationStatus {
+        do {
+            let granted = try await UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert])
+            if granted {
+                return await withCheckedContinuation { continuation in
+                    UNUserNotificationCenter.current().getNotificationSettings { settings in
+                        switch settings.authorizationStatus {
+                        case .authorized, .ephemeral, .provisional, .notDetermined, .denied:
+                            continuation.resume(with: .success(.notification(settings.authorizationStatus)))
+                        @unknown default:
+                            preconditionFailure()
+                        }
+                    }
+                }
             } else {
-                subscriber.receive(completion: .finished)
+                return .failure
             }
-        })
+        } catch {
+            return .failure
+        }
     }
 }
