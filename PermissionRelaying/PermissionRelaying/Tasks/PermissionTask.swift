@@ -9,10 +9,12 @@ import Foundation
 import Combine
 import AppTrackingTransparency
 import UserNotifications
+import CoreLocation
 
 enum PermissionAuthorizationStatus {
     case att(ATTrackingManager.AuthorizationStatus)
     case notification(UNAuthorizationStatus)
+    case location(CLAuthorizationStatus)
     case failure
 }
 

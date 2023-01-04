@@ -15,6 +15,11 @@ struct SetupTangerineWorkflow: PermissionTask {
               status == .authorized else {
             return attStatus
         }
+        let locationStatus = await LocationPermissionTask().request()
+        guard case .location(let status) = locationStatus,
+              status == .authorizedAlways || status == .authorizedWhenInUse else {
+            return locationStatus
+        }
         return await NotificationPermissionTask().request()
     }
 }
