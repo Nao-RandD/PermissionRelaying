@@ -10,14 +10,16 @@ import CoreLocation
 
 @MainActor
 class LocationPermissionTask: NSObject, PermissionTask {
-    fileprivate var locationManager: CLLocationManager? = nil
+    fileprivate var locationManager: CLLocationManager?
     fileprivate var continuation: AuthorizationStatusContinuation?
 
     typealias AuthorizationStatusContinuation = CheckedContinuation<CLAuthorizationStatus, Never>
 
     func request() async -> PermissionAuthorizationStatus {
         let authorizationStatus: CLAuthorizationStatus
-        locationManager = CLLocationManager()
+        if locationManager == nil {
+            locationManager = CLLocationManager()
+        }
 
         if locationManager?.authorizationStatus == .notDetermined {
             locationManager?.delegate = self
@@ -31,6 +33,14 @@ class LocationPermissionTask: NSObject, PermissionTask {
             authorizationStatus = status
         }
         return .location(authorizationStatus)
+    }
+
+    func checkStatus() async -> PermissionAuthorizationStatus {
+        guard let locationManager = locationManager else {
+            locationManager = CLLocationManager()
+            return .location(locationManager!.authorizationStatus)
+        }
+        return .location(locationManager.authorizationStatus)
     }
 }
 

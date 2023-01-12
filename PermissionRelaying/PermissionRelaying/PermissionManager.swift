@@ -34,6 +34,12 @@ final class PermissionManager {
         await queuing(task: workflow)
     }
 
+    func checkStatusTask(task: PermissionTask) async -> PermissionAuthorizationStatus {
+        // TODO: .runningかの考慮が必要？
+        let status = await task.checkStatus()
+        return status
+    }
+
     // MARK: - Private methods
 
     private func executeTask() async {
