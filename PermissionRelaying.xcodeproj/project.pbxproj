@@ -22,6 +22,7 @@
 		0DE3D3E02938493C0010297B /* PermissionRelayingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3D3DF2938493C0010297B /* PermissionRelayingUITests.swift */; };
 		0DE3D3E22938493C0010297B /* PermissionRelayingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3D3E12938493C0010297B /* PermissionRelayingUITestsLaunchTests.swift */; };
 		0DE3D3F0293849550010297B /* PermissionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3D3EF293849550010297B /* PermissionTask.swift */; };
+		A8563A09295AADF40042564F /* LocationPermissionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8563A08295AADF40042564F /* LocationPermissionTask.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		0DE3D3DF2938493C0010297B /* PermissionRelayingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionRelayingUITests.swift; sourceTree = "<group>"; };
 		0DE3D3E12938493C0010297B /* PermissionRelayingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionRelayingUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0DE3D3EF293849550010297B /* PermissionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionTask.swift; sourceTree = "<group>"; };
+		A8563A08295AADF40042564F /* LocationPermissionTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				0DE3D3EF293849550010297B /* PermissionTask.swift */,
 				0DAD1AF2293993C400D98A38 /* NotificationPermissionTask.swift */,
 				0DAD1AF42939943200D98A38 /* ATTPermissionTask.swift */,
+				A8563A08295AADF40042564F /* LocationPermissionTask.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			files = (
 				0DE3D3C3293849390010297B /* ViewController.swift in Sources */,
 				0DAD1AF52939943200D98A38 /* ATTPermissionTask.swift in Sources */,
+				A8563A09295AADF40042564F /* LocationPermissionTask.swift in Sources */,
 				0DAD1AF3293993C400D98A38 /* NotificationPermissionTask.swift in Sources */,
 				0DE3D3BF293849390010297B /* AppDelegate.swift in Sources */,
 				0DAD1B002939951200D98A38 /* PermissionWorkflow.swift in Sources */,

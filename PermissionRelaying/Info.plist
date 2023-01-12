@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>hogehoge</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>hogehoge</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>hogehoge</string>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>fugafuga</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
